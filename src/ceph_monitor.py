@@ -62,7 +62,7 @@ def main():
 
             # So sánh
             if current_status != last_status:
-                print(f"⚠️Trạng thái đổi: {last_status} -> {current_status}")
+                print(f" Trạng thái đổi: {last_status} -> {current_status}")
 
                 # Tạo nội dung tin nhắn
                 icon = "" if current_status == "HEALTH_OK" else ""

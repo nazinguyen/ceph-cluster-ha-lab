@@ -84,7 +84,7 @@ Expected Result: The cluster enters HEALTH_WARN state (Degraded), BUT the write 
 
 Recovery: Upon rebooting Node 3, the cluster automatically heals (HEALTH_OK) and resyncs data.
 
-## Demo Video: Zero-Downtime Failover
+## Demo Video: 
 Below is the recording of the HA test.
 
 Link youtube: https://youtu.be/pQZzFgy17MI

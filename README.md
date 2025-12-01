@@ -86,7 +86,9 @@ Recovery: Upon rebooting Node 3, the cluster automatically heals (HEALTH_OK) and
 
 ## Demo Video: Zero-Downtime Failover
 Below is the recording of the HA test.
+
 Link youtube: https://youtu.be/pQZzFgy17MI
+
 Left Screen: The "Heartbeat" script writing data continuously.
 
 Right Screen: VMware Console where Node 3 is powered off.

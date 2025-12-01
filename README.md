@@ -41,7 +41,7 @@ sudo microceph cluster bootstrap
 Adding Node 2 and Node 3 to the cluster:
 ```bash
 # On Node 1
-sudo microceph cluster add ceph-node2
+sudo microceph cluster add ceph-2
 # On Node 2 (Paste the token)
 sudo microceph cluster join <TOKEN>
 ```

@@ -36,3 +36,59 @@ Installing and bootstrapping the cluster on Node 1:
 ```bash
 sudo snap install microceph
 sudo microceph cluster bootstrap
+```
+
+Adding Node 2 and Node 3 to the cluster:
+```bash
+# On Node 1
+sudo microceph cluster add ceph-node2
+# On Node 2 (Paste the token)
+sudo microceph cluster join <TOKEN>
+```
+
+### 2. OSD Configuration (Storage)
+Adding raw disks (/dev/sdb) from all nodes to the storage pool:
+```bash
+sudo microceph disk add /dev/sdb --wipe
+```
+
+### 3. Monitoring System Setup
+The monitoring system is written in Python and managed by Systemd to ensure 24/7 operation.
+Configuration (ceph_secrets.env):
+Ini, TOML
+```bash
+TELEGRAM_BOT_TOKEN="your_bot_token"
+TELEGRAM_CHAT_ID="your_chat_id"
+```
+
+### Service Installation:
+```bash
+sudo cp src/ceph-monitor.service /etc/systemd/system/
+sudo systemctl enable --now ceph-monitor
+```
+
+## High Availability Test Scenario ("The Heartbeat Test")
+To prove the system's resilience, I performed a Live Node Failure Test.
+
+### The Setup
+CephFS is mounted on Node 1 at /mnt/ceph-storage.
+
+A Python script (ha_test.py) writes timestamped data to the mounted drive every 0.5 seconds.
+
+Script Logic: Writes -> Flush to RAM -> Fsync to Disk (Ensure data persistence).
+
+The "Chaos" Action
+While the script is writing, Node 3 is forcibly powered off (Hard shutdown).
+
+Expected Result: The cluster enters HEALTH_WARN state (Degraded), BUT the write operation continues without interruption.
+
+Recovery: Upon rebooting Node 3, the cluster automatically heals (HEALTH_OK) and resyncs data.
+
+## Demo Video: Zero-Downtime Failover
+Below is the recording of the HA test.
+Link youtube: https://youtu.be/pQZzFgy17MI
+Left Screen: The "Heartbeat" script writing data continuously.
+
+Right Screen: VMware Console where Node 3 is powered off.
+
+Result: No data loss, no I/O error occurred.

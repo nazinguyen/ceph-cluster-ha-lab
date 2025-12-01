@@ -23,7 +23,7 @@ send_telegram() {
         --data-urlencode "text=$MSG" > /dev/null
 }
 
-# --- LOGIC CHÍNH (Giữ nguyên như cũ) ---
+# --- LOGIC CHÍNH ---
 
 CURRENT_STATUS=$(sudo ceph health | awk '{print $1}')
 DETAIL=$(sudo ceph status)

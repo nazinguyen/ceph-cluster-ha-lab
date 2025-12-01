@@ -13,9 +13,9 @@ The cluster consists of 3 Virtual Machines interconnected via a local network:
 
 | Node Name | Role | OS | Configuration |
 | :--- | :--- | :--- | :--- |
-| **ceph-node1** | Monitor, Manager, OSD | Ubuntu 22.04 LTS | 2 vCPU, 2GB RAM, 10GB OSD Disk |
-| **ceph-node2** | Monitor, OSD | Ubuntu 22.04 LTS | 2 vCPU, 2GB RAM, 10GB OSD Disk |
-| **ceph-node3** | Monitor, OSD | Ubuntu 22.04 LTS | 2 vCPU, 2GB RAM, 10GB OSD Disk |
+| **ceph-1** | Monitor, Manager, OSD | Ubuntu 22.04 LTS | 2 vCPU, 2GB RAM, 10GB OSD Disk |
+| **ceph-2** | Monitor, OSD | Ubuntu 22.04 LTS | 2 vCPU, 2GB RAM, 10GB OSD Disk |
+| **ceph-3** | Monitor, OSD | Ubuntu 22.04 LTS | 2 vCPU, 2GB RAM, 10GB OSD Disk |
 
 * **Total Storage Pool:** ~30GB (Raw)
 * **Replication Factor:** 3 (Data is replicated across all nodes for redundancy)
